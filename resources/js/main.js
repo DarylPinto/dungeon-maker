@@ -1,22 +1,22 @@
-var dungeon_settings = new Object();
+dungeon.settings = new Object();
 
-//Stores settings from form into an object
-function store_settings(){
+//Save settings from GUI into a data object (dungeon.settings)
+function save_settings(){
 
 	//Average Party level
-	dungeon_settings.apl = parseInt($('#party-level').val());
+	dungeon.settings.apl = parseInt($('#party-level').val());
 
 	//Challenge Rating
-	dungeon_settings.cr = dungeon_settings.apl;
+	dungeon.settings.cr = dungeon.settings.apl;
 
-	dungeon_settings.traps = $('#trap-toggle input[type="checkbox"]').is(':checked');
-	dungeon_settings.advanced_biomes = $('#biome-advanced-toggle input[type="checkbox"]').is(':checked');
-	dungeon_settings.multi_biomes = $('#multi-biome-toggle input[type="checkbox"]').is(':checked');
-	dungeon_settings.possible_difficulties = [];
+	dungeon.settings.traps = $('#trap-toggle input[type="checkbox"]').is(':checked');
+	dungeon.settings.advanced_biomes = $('#biome-advanced-toggle input[type="checkbox"]').is(':checked');
+	dungeon.settings.multi_biomes = $('#multi-biome-toggle input[type="checkbox"]').is(':checked');
+	dungeon.settings.possible_difficulties = [];
 
 	$('#difficulty-selection p input[type="checkbox"]').each(function(){
 		if( $(this).is(':checked') ){
-			dungeon_settings.possible_difficulties.push( $('label[for="'+$(this).attr('id')+'"]').text() );
+			dungeon.settings.possible_difficulties.push( $('label[for="'+$(this).attr('id')+'"]').text() );
 		}
 	});
 
@@ -25,7 +25,7 @@ function store_settings(){
 //Return random difficulty from selected possibilites, also modify CR accordingly
 function getDungeonDifficulty(){
 
-	var difficulties = dungeon_settings.possible_difficulties;
+	var difficulties = dungeon.settings.possible_difficulties;
 
 	//Choose random difficulty
 	var selected_difficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
@@ -40,7 +40,7 @@ function getDungeonDifficulty(){
 	}
 
 	//Modify Challenge Rating based on difficulty	
-	dungeon_settings.cr += challenge_modifier[selected_difficulty];
+	dungeon.settings.cr += challenge_modifier[selected_difficulty];
 
 	//Return random difficulty determined above
 	return selected_difficulty;
