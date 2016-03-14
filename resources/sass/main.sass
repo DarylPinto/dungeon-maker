@@ -1,0 +1,40 @@
+@import _mixins
+
+//Overwrite Materialize.css
+
+.input-field label
+	left: 0
+
+
+
+//Main
+
+body
+	height: 100vh
+	+background-gradient(#C18CBE, #A3DED7)
+
+
+main
+	display: flex
+	justify-content: center
+	align-items: center
+	height: 100vh
+	#user-settings
+		background-color: white
+		padding: 30px
+		border-radius: 10px
+		width: 615px
+		box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.15)
+		text-align: center
+		.col
+			text-align: left
+		.input-field, h6
+			margin-bottom: 30px
+		.switch
+			margin-bottom: 55px
+		.switch-label
+			display: inline-block
+			min-width: 80px
+		#difficulty-selection
+			position: relative
+			left: 50px

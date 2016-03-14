@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title></title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<meta charset="utf-8">
+	<meta name="theme-color" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta name="og:title" content="">
+	<meta name="og:description" content="">
+	<meta name="og:image" content="">
+
+	<!--Import Google Icon Font-->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="resources/materialize/css/materialize.css"  media="screen,projection"/>
+
+	<link rel="shortcut icon" type="image/ico" href="resources/images/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+
+	<!-- Flexibility (Partial Flexbox support for IE 8 & 9) :: github.com/10up/flexibility-->
+	<!--[if lte IE 9]>
+		<script type="text/javascript" src="resources/js/min/flexibility.min.js"></script>
+	<!--<![endif]-->
+		
+	<!-- jQuery :: jquery.com-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Materialize :: materializecss.com-->
+	<script type="text/javascript" src="resources/materialize/js/bin/materialize.min.js"></script>
+
+	<!-- HTML5 Shiv :: github.com/aFarkas/html5shiv-->
+	<script type="text/javascript" src="resources/js/min/html5shiv.min.js"></script>
+
+	<!-- Browser Detection Script -->
+	<script type="text/javascript" src="resources/js/min/browser-detection.min.js"></script>
+
+</head>
+<body>
+
+	<header>
+		<div class="container"></div>
+	</header>
+	<main>
+		
+		<div id="user-settings" role="form">
+			<div class="input-field">
+				<input type="number" id="party-level">
+				<label for="party-level">Average Party Level</label>	
+			</div>
+			<div class="row">
+
+				<div class="col s6">
+				
+					<h6>Dungeon Properties</h6>
+
+					<div class="switch" id="trap-toggle">
+					  <label>
+					    <span class="switch-label">No Traps</span>
+					    <input type="checkbox">
+					    <span class="lever"></span>
+					    <span class="switch-label">Traps</span>
+					  </label>
+					</div>
+					<div class="switch" id="biome-advanced-toggle">
+					  <label>
+					    <span class="switch-label">Simple Biome</span>
+					    <input type="checkbox">
+					    <span class="lever"></span>
+					    <span class="switch-label">Advanced Biome</span>
+					  </label>
+					</div>
+					<div class="switch" id="multi-biome-toggle">
+					  <label>
+					    <span class="switch-label">Single Biome</span>
+					    <input type="checkbox">
+					    <span class="lever"></span>
+					    <span class="switch-label">Multi Biome</span>
+					  </label>
+					</div>
+
+				</div>
+				<div class="col s6" id="difficulty-selection">
+					
+					<h6>Possible Dungeon Difficulties</h6>
+
+					<p>
+						<input type="checkbox" class="filled-in" id="easy-dungeon" />
+						<label for="easy-dungeon">Easy</label>
+					</p>
+					<p>
+						<input type="checkbox" class="filled-in" id="average-dungeon" checked="checked" />
+						<label for="average-dungeon">Average</label>
+					</p>
+					<p>
+						<input type="checkbox" class="filled-in" id="challenging-dungeon" checked="checked" />
+						<label for="challenging-dungeon">Challenging</label>
+					</p>
+					<p>
+						<input type="checkbox" class="filled-in" id="hard-dungeon" checked="checked" />
+						<label for="hard-dungeon">Hard</label>
+					</p>
+					<p>
+						<input type="checkbox" class="filled-in" id="epic-dungeon" />
+						<label for="epic-dungeon">Epic</label>
+					</p>
+
+				</div>
+			</div>
+			<div class="btn" id="generate-dungeon-btn">
+        <span>Generate Dungeon</span>
+      </div>
+		</div>
+
+	</main>
+	<footer>
+		<div class="container"></div>
+	</footer>
+
+<script type="text/javascript" src="resources/js/dungeon-data.js"></script>
+<script type="text/javascript" src="resources/js/main.js"></script>
+<script type="text/javascript" src="resources/js/event-handlers.js"></script>
+
+</body>
+</html>
