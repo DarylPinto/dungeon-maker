@@ -1,6 +1,11 @@
 .input-field label {
   left: 0; }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
 body {
   min-height: 100vh;
   background: #C18CBE;

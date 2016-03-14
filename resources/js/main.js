@@ -1,3 +1,21 @@
+///////////////////////
+// Utility functions //
+///////////////////////
+
+
+//Random number between low and high
+//High inclusive, Low non-inclusive
+function rand(low, high){
+	var difference = high - low;
+	return	Math.ceil(Math.random() * difference) + low;
+}
+
+
+////////////////////
+// Main Functions //
+////////////////////
+
+
 //Data object containing settings from GUI
 dungeon.settings = new Object();
 
@@ -39,7 +57,7 @@ function setDungeonDifficulty(){
 	var difficulties = dungeon.settings.possible_difficulties;
 
 	//Choose random difficulty
-	var selected_difficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
+	var selected_difficulty = difficulties[ rand(0, difficulties.length) ];
 
 	//Difficulty Challenge Rating Modifier
 	var challenge_modifier = {
