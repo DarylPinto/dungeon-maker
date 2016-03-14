@@ -21,7 +21,7 @@ main {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
-    width: 615px;
+    width: 650px;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.15);
     text-align: center; }
     main #user-settings .col {
@@ -32,9 +32,12 @@ main {
       margin-bottom: 55px; }
     main #user-settings .switch-label {
       display: inline-block;
-      min-width: 80px; }
+      min-width: 140px;
+      color: #7B7B7B; }
     main #user-settings #difficulty-selection {
       position: relative;
-      left: 50px; }
+      left: 85px; }
+      main #user-settings #difficulty-selection p label {
+        color: #7B7B7B; }
 
 /*# sourceMappingURL=main.css.map */

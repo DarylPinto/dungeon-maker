@@ -2,49 +2,39 @@
 <html lang="en">
 <head>
 
-	<title></title>
+	<title>Pathfinder Dungeon Generator</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	
 	<meta charset="utf-8">
 	<meta name="theme-color" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/ico" href="resources/images/favicon.ico" />
 
-	<meta name="og:title" content="">
+	<meta name="og:title" content="Pathfinder Dungeon Generator">
 	<meta name="og:description" content="">
 	<meta name="og:image" content="">
 
-	<!--Import Google Icon Font-->
-	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href="resources/materialize/css/materialize.css"  media="screen,projection"/>
+	<!--[if lte IE 9]>
+		<meta http-equiv="refresh" content="0; url=http://outdatedbrowser.com/en">
+	<!--<![endif]-->
 
-	<link rel="shortcut icon" type="image/ico" href="resources/images/favicon.ico" />
+	<!-- Materialize CSS :: materializecss.com-->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="resources/materialize/css/materialize.css"  media="screen,projection"/>
+	
+	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 
-	<!-- Flexibility (Partial Flexbox support for IE 8 & 9) :: github.com/10up/flexibility-->
-	<!--[if lte IE 9]>
-		<script type="text/javascript" src="resources/js/min/flexibility.min.js"></script>
-	<!--<![endif]-->
-		
 	<!-- jQuery :: jquery.com-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-	<!-- Materialize :: materializecss.com-->
+	<!-- Materialize JS :: materializecss.com-->
 	<script type="text/javascript" src="resources/materialize/js/bin/materialize.min.js"></script>
-
-	<!-- HTML5 Shiv :: github.com/aFarkas/html5shiv-->
-	<script type="text/javascript" src="resources/js/min/html5shiv.min.js"></script>
-
-	<!-- Browser Detection Script -->
-	<script type="text/javascript" src="resources/js/min/browser-detection.min.js"></script>
 
 </head>
 <body>
 
-	<header>
-		<div class="container"></div>
-	</header>
 	<main>
 		
 		<div id="user-settings" role="form">
@@ -56,54 +46,71 @@
 
 				<div class="col s6">
 				
-					<h6>Dungeon Properties</h6>
-
+					<h6>Potential Elements</h6>
+	
+					<!-- Material Switch -->
 					<div class="switch" id="trap-toggle">
-					  <label>
-					    <span class="switch-label">No Traps</span>
-					    <input type="checkbox">
-					    <span class="lever"></span>
-					    <span class="switch-label">Traps</span>
-					  </label>
+						<span class="switch-label">Traps</span>
+						<label>
+							Off
+							<input type="checkbox">
+							<span class="lever"></span>
+							On
+						</label>
 					</div>
+					
+					<!-- Material Switch -->
 					<div class="switch" id="biome-advanced-toggle">
-					  <label>
-					    <span class="switch-label">Simple Biome</span>
-					    <input type="checkbox">
-					    <span class="lever"></span>
-					    <span class="switch-label">Advanced Biome</span>
-					  </label>
+						<span class="switch-label">Advanced Biomes</span>
+						<label>
+							Off
+							<input type="checkbox">
+							<span class="lever"></span>
+							On
+						</label>
 					</div>
+					
+					<!-- Material Switch -->
 					<div class="switch" id="multi-biome-toggle">
-					  <label>
-					    <span class="switch-label">Single Biome</span>
-					    <input type="checkbox">
-					    <span class="lever"></span>
-					    <span class="switch-label">Multi Biome</span>
-					  </label>
+						<span class="switch-label">Multi-Biome</span>
+						<label>
+							Off
+							<input type="checkbox">
+							<span class="lever"></span>
+							On
+						</label>
 					</div>
 
 				</div>
 				<div class="col s6" id="difficulty-selection">
 					
-					<h6>Possible Dungeon Difficulties</h6>
-
+					<h6>Potential Difficulties</h6>
+					
+					<!-- Material Checkbox -->
 					<p>
 						<input type="checkbox" class="filled-in" id="easy-dungeon" />
 						<label for="easy-dungeon">Easy</label>
 					</p>
+					
+					<!-- Material Checkbox -->
 					<p>
 						<input type="checkbox" class="filled-in" id="average-dungeon" checked="checked" />
 						<label for="average-dungeon">Average</label>
 					</p>
+					
+					<!-- Material Checkbox -->
 					<p>
 						<input type="checkbox" class="filled-in" id="challenging-dungeon" checked="checked" />
 						<label for="challenging-dungeon">Challenging</label>
 					</p>
+					
+					<!-- Material Checkbox -->
 					<p>
 						<input type="checkbox" class="filled-in" id="hard-dungeon" checked="checked" />
 						<label for="hard-dungeon">Hard</label>
 					</p>
+					
+					<!-- Material Checkbox -->
 					<p>
 						<input type="checkbox" class="filled-in" id="epic-dungeon" />
 						<label for="epic-dungeon">Epic</label>
@@ -111,15 +118,15 @@
 
 				</div>
 			</div>
+
+			<!-- Material Button -->
 			<div class="btn" id="generate-dungeon-btn">
-        <span>Generate Dungeon</span>
-      </div>
+				<span>Generate Dungeon</span>
+			</div>
+			
 		</div>
 
 	</main>
-	<footer>
-		<div class="container"></div>
-	</footer>
 
 <script type="text/javascript" src="resources/js/dungeon-build-info.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
