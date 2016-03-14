@@ -1,5 +1,5 @@
 $('#generate-dungeon-btn').click(function(){
-	readInputs();
+	main();
 });
 
 //When the page loads
