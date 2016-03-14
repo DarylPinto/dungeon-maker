@@ -10,6 +10,10 @@ function rand(low, high){
 	return	Math.ceil(Math.random() * difference) + low;
 }
 
+//Return a random element from an array
+function randItemFrom(array){
+	return array[ rand(0, array.length) - 1 ];
+}
 
 ////////////////////
 // Main Functions //
@@ -31,18 +35,21 @@ function save_settings(){
 	}else if( parseInt($('#party-level').val()) < 0 ){
 		$('#party-level').val(0);
 	}
-
-	//Average Party level
+	
+	//Average Party level (int)
 	dungeon.settings.apl = parseInt($('#party-level').val());
-
-	//Challenge Rating
-	dungeon.settings.cr = dungeon.settings.apl;
-
+	
+	//Potential for traps (bool)
 	dungeon.settings.traps = $('#trap-toggle input[type="checkbox"]').is(':checked');
+	
+	//Potential for advanced biomes (bool)
 	dungeon.settings.advanced_biomes = $('#biome-advanced-toggle input[type="checkbox"]').is(':checked');
+	
+	//Potential for multi-biome dungeon (bool)
 	dungeon.settings.multi_biomes = $('#multi-biome-toggle input[type="checkbox"]').is(':checked');
-	dungeon.settings.possible_difficulties = [];
 
+	//Potential difficulties (array)
+	dungeon.settings.possible_difficulties = [];
 	$('#difficulty-selection p input[type="checkbox"]').each(function(){
 		if( $(this).is(':checked') ){
 			dungeon.settings.possible_difficulties.push( $('label[for="'+$(this).attr('id')+'"]').text() );
@@ -57,7 +64,7 @@ function setDungeonDifficulty(){
 	var difficulties = dungeon.settings.possible_difficulties;
 
 	//Choose random difficulty
-	var selected_difficulty = difficulties[ rand(0, difficulties.length) ];
+	var selected_difficulty = randItemFrom(difficulties);
 
 	//Difficulty Challenge Rating Modifier
 	var challenge_modifier = {
@@ -68,16 +75,17 @@ function setDungeonDifficulty(){
 		'Epic' : 3
 	}
 
-	//Modify Challenge Rating based on difficulty	
-	dungeon.settings.cr += challenge_modifier[selected_difficulty];
+	//Save random difficulty determined above
+	dungeon.data.difficulty = selected_difficulty;
+
+	//Save challenge rating by adding challenge modifier for
+	//selected difficulty to APL	
+	dungeon.data.cr += challenge_modifier[selected_difficulty];
 
 	//Prevent challenge rating from going over maximum CR or under 0
 	var max_cr = dungeon.build_info.max_xp_for_cr.length - 1;
-	if(dungeon.settings.cr < 0) dungeon.settings.cr = 0;
-	if(dungeon.settings.cr > max_cr) dungeon.settings.cr = max_cr;
-
-	//Save random difficulty determined above
-	dungeon.data.difficulty = selected_difficulty;
+	if(dungeon.data.cr < 0) dungeon.data.cr = 0;
+	if(dungeon.data.cr > max_cr) dungeon.data.cr = max_cr;
 
 }
 
