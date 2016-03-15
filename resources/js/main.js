@@ -31,6 +31,26 @@ function getNumberOfItemsIn(array){
 	return count;
 }
 
+
+//////////////////////
+// DOM manipulation //
+//////////////////////
+
+//Ensure at least one difficulty checkbox is always checked
+function keepLastOptionChecked(){
+	var amount_checked = 0;
+
+	$('#difficulty-selection p input').each(function(){
+		if( $(this).is(':checked') ) amount_checked += 1;
+	});
+
+	$('#difficulty-selection p label').removeClass('unclickable');
+
+	if( amount_checked === 1){
+		$('#difficulty-selection p input:checked').siblings('label').addClass('unclickable');
+	}
+}
+
 ////////////////////
 // Main Functions //
 ////////////////////
@@ -68,7 +88,7 @@ function save_settings(){
 	dungeon.settings.possible_difficulties = [];
 	$('#difficulty-selection p input[type="checkbox"]').each(function(){
 		if( $(this).is(':checked') ){
-			dungeon.settings.possible_difficulties.push( $('label[for="'+$(this).attr('id')+'"]').text() );
+			dungeon.settings.possible_difficulties.push( $(this).siblings('label').text() );
 		}
 	});
 
