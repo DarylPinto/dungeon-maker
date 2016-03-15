@@ -37,12 +37,12 @@ function getNumberOfItemsIn(array){
 //////////////////////
 
 //Ensure at least one difficulty checkbox is always checked
-function keepLastOptionChecked(){
+function preventLastOptionFromUncheck(){
 	var amount_checked = 0;
 
 	$('#difficulty-selection p input').each(function(){
 		if( $(this).is(':checked') ) amount_checked += 1;
-	});
+	})
 
 	$('#difficulty-selection p label').removeClass('unclickable');
 
@@ -76,19 +76,20 @@ function save_settings(){
 	dungeon.settings.apl = parseInt($('#party-level').val());
 	
 	//Potential for traps (bool)
-	dungeon.settings.traps = $('#trap-toggle input[type="checkbox"]').is(':checked');
+	dungeon.settings.traps = $('#trap-toggle input').is(':checked');
 	
 	//Potential for advanced biomes (bool)
-	dungeon.settings.advanced_biomes = $('#biome-advanced-toggle input[type="checkbox"]').is(':checked');
+	dungeon.settings.advanced_biomes = $('#biome-advanced-toggle input').is(':checked');
 	
 	//Potential for multi-biome dungeon (bool)
-	dungeon.settings.multi_biomes = $('#multi-biome-toggle input[type="checkbox"]').is(':checked');
+	dungeon.settings.multi_biomes = $('#multi-biome-toggle input').is(':checked');
 
 	//Potential difficulties (array)
 	dungeon.settings.possible_difficulties = [];
 	$('#difficulty-selection p input[type="checkbox"]').each(function(){
 		if( $(this).is(':checked') ){
-			dungeon.settings.possible_difficulties.push( $(this).siblings('label').text() );
+			dungeon.settings.possible_difficulties
+				.push( $(this).siblings('label').text() );
 		}
 	});
 
@@ -159,6 +160,6 @@ function main(){
 
 	setBiome();
 
-	//Log info to console
-	console.log(dungeon);
+	//Log generated dungeon to console
+	console.log(dungeon.data);
 }
