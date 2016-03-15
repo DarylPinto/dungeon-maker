@@ -119,8 +119,9 @@ function setBiome(){
 	//Add a random biome
 	selected_biomes.push( randItemFrom(biome_pool) );
 
-	//If multi-biome is enabled add another random biome
-	if(dungeon.settings.multi_biomes === true){
+	//If multi-biome is enabled, flip a coin to potentially
+	//add another random biome
+	if(dungeon.settings.multi_biomes === true && rand(0,2) === 1){
 		selected_biomes.push( randItemFrom(biome_pool) );
 	}
 
@@ -136,6 +137,8 @@ function main(){
 	save_settings();
 
 	setDungeonDifficulty();
+
+	setBiome();
 
 	//Log info to console
 	console.log(dungeon);
