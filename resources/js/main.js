@@ -37,7 +37,7 @@ function getNumberOfItemsIn(array){
 //////////////////////
 
 //Ensure at least one checkbox within `parent_selector` is always checked
-function preventAllUncheckIn(parent_selector){
+function preventUncheckAllIn(parent_selector){
 
 	//Enable all boxes
 	$(parent_selector + ' input').removeAttr('disabled');
