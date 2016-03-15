@@ -3,15 +3,15 @@ $('#generate-dungeon-btn').click(function(){
 });
 
 $('#difficulty-selection p input').change(function(){
-	preventLastOptionFromUncheck();
+	preventAllUncheckIn('#difficulty-selection');
 })
 
 //When the page loads
 $(function() {
 
 	//Sometimes page will remember previously checked items on reload
-	//so it's necessary to check for this on load.
-	preventLastOptionFromUncheck();
+	//so document.ready check is required
+	preventAllUncheckIn('#difficulty-selection');
 
 });
 

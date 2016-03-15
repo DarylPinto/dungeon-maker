@@ -36,18 +36,21 @@ function getNumberOfItemsIn(array){
 // DOM manipulation //
 //////////////////////
 
-//Ensure at least one difficulty checkbox is always checked
-function preventLastOptionFromUncheck(){
-	var amount_checked = 0;
+//Ensure at least one checkbox within `parent_selector` is always checked
+function preventAllUncheckIn(parent_selector){
 
-	$('#difficulty-selection p input').each(function(){
+	//Enable all boxes
+	$(parent_selector + ' input').removeAttr('disabled');
+
+	//Find number of boxes currently checked
+	var amount_checked = 0;
+	$(parent_selector + ' input').each(function(){
 		if( $(this).is(':checked') ) amount_checked += 1;
 	})
 
-	$('#difficulty-selection p label').removeClass('unclickable');
-
+	//If only one is checked, disable it (make it unclickable)
 	if( amount_checked === 1){
-		$('#difficulty-selection p input:checked').siblings('label').addClass('unclickable');
+		$(parent_selector + ' input:checked').attr('disabled', 'disabled');
 	}
 }
 
