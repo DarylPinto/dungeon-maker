@@ -3,6 +3,8 @@ var dungeon = new Object();
 //Data object containing template information to build the dungeon with
 dungeon.build_info = new Object();
 
+	dungeon.build_info.max_apl = 20;
+
 	//Maximum experience points per challenge rating
 	//Use challenge rating as index to access values
 	//ex. dungeon.build_info.max_xp_for_cr[6] = 2400
@@ -35,10 +37,62 @@ dungeon.build_info = new Object();
 		1638400 
 	]
 
-	dungeon.build_info.max_apl = 20;
+	dungeon.build_info.biomes = {
+		
+		basic: [
+			'Classic',
+			'Earth',
+			'Air',
+			'Fire',
+			'Water',
+			'Light',
+			'Shadow',
+			'Darkness',
+			'Forrested',
+			'Plains',
+			'Beach',
+			'Metallic',
+			'Electric',
+			'Mountains',
+			'Red',
+			'Orange',
+			'Yellow',
+			'Green',
+			'Blue',
+			'Violet',
+			'Sonic',
+			'Acidic',
+			'Frosted',
+			'Insulated',
+			'Masterwork'
+		],
 
-	dungeon.build_info.biomes = [
-		'Basic Biome',
-		'Fire Biome',
-		'Advanced Biome',
-	]
+		advanced: [
+			'Pixel',
+			'Demonic',
+			'Void',
+			'Angelic',
+			'Eldritch',
+			'Chaotic',
+			'Orderly',
+			'Plasma',
+			'Industrial',
+			'Clockwork',
+			'Temporal',
+			'Spatial',
+			'Dank',
+			'Automotive',
+			'Stellar',
+			'Lunar',
+			'Vicordian',
+			'Etheral',
+			'Astral',
+			'Bouncing',
+			'Gilded',
+			'Draconic',
+			'Fairy',
+			'Urban',
+			'Copyright'
+		]
+
+	}

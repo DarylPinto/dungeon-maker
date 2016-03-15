@@ -1,7 +1,15 @@
+/*
+https://docs.google.com/document/d/1spuipUu2dyQ1tWzJ5JHuH4CdZQPlodnkh8wbwu6vXso/edit
+
+https://docs.google.com/spreadsheets/d/1gJj7eydUiJz0bc5oyz3m3YTBT1AkTy1npNHteQDDEkE/edit#gid=0
+
+https://docs.google.com/spreadsheets/d/1njy4hq8C7HfXLcd-qtXz4p3FYp10LE9_qn5cHbaq5l0/edit#gid=0
+*/
+
+
 ///////////////////////
 // Utility functions //
 ///////////////////////
-
 
 //Random number between low and high
 //High inclusive, Low non-inclusive
@@ -13,6 +21,14 @@ function rand(low, high){
 //Return a random element from an array
 function randItemFrom(array){
 	return array[ rand(0, array.length) - 1 ];
+}
+
+//Return object with unique elements from array
+//and how many times they appear
+function getNumberOfItemsIn(array){
+	var  count = new Object();
+	array.forEach(function(i) { count[i] = (count[i]||0)+1; });
+	return count;
 }
 
 ////////////////////
@@ -80,7 +96,7 @@ function setDungeonDifficulty(){
 
 	//Save challenge rating by adding challenge modifier for
 	//selected difficulty to APL	
-	dungeon.data.cr += challenge_modifier[selected_difficulty];
+	dungeon.data.cr = dungeon.settings.apl + challenge_modifier[selected_difficulty];
 
 	//Prevent challenge rating from going over maximum CR or under 0
 	var max_cr = dungeon.build_info.max_xp_for_cr.length - 1;
@@ -89,8 +105,27 @@ function setDungeonDifficulty(){
 
 }
 
-//Return selected Biome
-function getBiome(){
+function setBiome(){
+
+	var biome_pool = dungeon.build_info.biomes.basic;
+	var selected_biomes = [];
+
+	//If advanced biomes are toggled on, add them to the pool of potential biomes
+	if(dungeon.settings.advanced_biomes === true){
+		biome_pool = dungeon.build_info.biomes.basic
+			.concat(dungeon.build_info.biomes.advanced);
+	}
+
+	//Add a random biome
+	selected_biomes.push( randItemFrom(biome_pool) );
+
+	//If multi-biome is enabled add another random biome
+	if(dungeon.settings.multi_biomes === true){
+		selected_biomes.push( randItemFrom(biome_pool) );
+	}
+
+	//Save selected biomes
+	dungeon.data.biomes = selected_biomes;
 
 }
 
