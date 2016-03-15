@@ -119,9 +119,8 @@ function setBiome(){
 	//Add a random biome
 	selected_biomes.push( randItemFrom(biome_pool) );
 
-	//If multi-biome is enabled, flip a coin to potentially
-	//add another random biome
-	if(dungeon.settings.multi_biomes === true && rand(0,2) === 1){
+	//If multi-biome is enabled add another random biome
+	if(dungeon.settings.multi_biomes === true){
 		selected_biomes.push( randItemFrom(biome_pool) );
 	}
 
