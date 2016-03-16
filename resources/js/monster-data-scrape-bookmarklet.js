@@ -23,7 +23,12 @@ $('.stat-block-title').each(function(){
 	//Get URL snippet
 	var url = stripURL(location.href);
 	//If XP isn't blank, add line to output
-	if(xp.length > 0) output += "<p> new Monster('"+monster_name+"', "+xp+", [''], '"+url+"'), </p>";
+	if(xp.length > 0) output += "new Monster('"+monster_name+"', "+xp+", [''], '"+url+"'), \n";
 });
-//Log output on screen
-$('body').empty().append(output);
+//Log output to textarea and select it
+$('body').empty().append('<textarea id="output">'+output+'</textarea>');
+$('#output').css({
+	'font-family' : 'monospace',
+	'height' : '95vh',
+	'width' : '95vw',
+}).select();
