@@ -13,17 +13,17 @@ function stripURL(str){
 var output = '';
 $('.stat-block-title').each(function(){
 	//Remove span tag inside title (usually contains CR)
-  $(this).find('span').remove();
-  //Get Monster name, remove anything that looks like a CR
-  var monster_name = $(this).text().replace(/CR \d/g, '').trim();
-  //get XP value from next paragraph
-  var xp = $(this).next('p').text();
-  //Only keep XP value if the characters 'XP' were in the element
-  xp = ( xp.toUpperCase().indexOf('XP') > -1 ) ? xp.replace(/\D/g, '') : '';
-  //Get URL snippet
-  var url = stripURL(location.href);
-  //If XP isn't blank, add line to output
-  if(xp.length > 0) output += "<p> new Monster('"+monster_name+"', "+xp+", [''], '"+url+"'), </p>";
+	$(this).find('span').remove();
+	//Get Monster name, remove anything that looks like a CR value (incase it wasn't in the removed span)
+	var monster_name = $(this).text().replace(/CR \d/g, '').trim();
+	//get XP value by reading the immediately following paragraph
+	var xp = $(this).next('p').text();
+	//Only keep XP value if the characters 'XP' were in the paragraph (sometimes they put other stuff here like gold)
+	xp = ( xp.toUpperCase().indexOf('XP') > -1 ) ? xp.replace(/\D/g, '') : '';
+	//Get URL snippet
+	var url = stripURL(location.href);
+	//If XP isn't blank, add line to output
+	if(xp.length > 0) output += "<p> new Monster('"+monster_name+"', "+xp+", [''], '"+url+"'), </p>";
 });
 //Log output on screen
 $('body').empty().append(output);
