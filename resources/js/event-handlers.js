@@ -1,3 +1,7 @@
+$('#party-level').blur(function(){
+	constrainNumberInput(this, 0, 20);
+});
+
 $('#generate-dungeon-btn').click(function(){
 	main();
 });

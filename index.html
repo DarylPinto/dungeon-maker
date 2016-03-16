@@ -39,7 +39,7 @@
 		
 		<div id="user-settings" role="form">
 			<div class="input-field">
-				<input type="number" id="party-level" value="0">
+				<input type="number" id="party-level" min="0" max="20" value="1">
 				<label for="party-level">Average Party Level</label>	
 			</div>
 			<div class="row">
@@ -52,10 +52,10 @@
 					<div class="switch" id="trap-toggle">
 						<span class="switch-label">Traps</span>
 						<label>
-							Off
+							No
 							<input type="checkbox">
 							<span class="lever"></span>
-							Possible
+							Maybe
 						</label>
 					</div>
 					
@@ -63,10 +63,10 @@
 					<div class="switch" id="biome-advanced-toggle">
 						<span class="switch-label">Advanced Biomes</span>
 						<label>
-							Off
+							No
 							<input type="checkbox">
 							<span class="lever"></span>
-							Possible
+							Maybe
 						</label>
 					</div>
 					
@@ -74,10 +74,10 @@
 					<div class="switch" id="multi-biome-toggle">
 						<span class="switch-label">Multi-Biome</span>
 						<label>
-							Off
+							No
 							<input type="checkbox">
 							<span class="lever"></span>
-							On
+							Yes
 						</label>
 					</div>
 

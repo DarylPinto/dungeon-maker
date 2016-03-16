@@ -54,6 +54,12 @@ function preventUncheckAllIn(parent_selector){
 	}
 }
 
+//Ensure input[type="number"] cannot be  or lower than min  higher than max
+function constrainNumberInput(el, min, max){
+	if( parseInt(el.value) < min ) el.value = min;
+	if( parseInt(el.value) > max ) el.value = max;
+}
+
 ////////////////////
 // Main Functions //
 ////////////////////
