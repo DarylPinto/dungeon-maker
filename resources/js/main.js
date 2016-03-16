@@ -30,7 +30,6 @@ function getNumberOfItemsIn(array){
 	return count;
 }
 
-
 //////////////////////
 // DOM manipulation //
 //////////////////////
@@ -57,6 +56,20 @@ function preventUncheckAllIn(parent_selector){
 function constrainNumberInput(el, min, max){
 	if( parseInt(el.value) < min ) el.value = min;
 	if( parseInt(el.value) > max ) el.value = max;
+}
+
+function shiftLeft(){
+	$('#user-settings').addClass('fadeOutLeft');
+	window.setTimeout(function(){
+		$('#user-settings').addClass('hidden');	
+	}, 950);
+}
+
+function shiftRight(){
+	$('#user-settings').removeClass('fadeOutLeft');
+	window.setTimeout(function(){
+		$('#user-settings').addClass('hidden');	
+	}, 950);
 }
 
 ////////////////////

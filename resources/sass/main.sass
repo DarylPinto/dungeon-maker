@@ -10,19 +10,59 @@ input[type=number]::-webkit-outer-spin-button
 	-webkit-appearance: none
 	margin: 0
 
-//Main
+//Animations courtesy of animatecss :: daneden.github.io/animate.css
 
-body
-	min-height: 100vh
-	+background-gradient(#C18CBE, #A3DED7)
++keyframes(fadeOutLeft)
+	0%
+		opacity: 1
+	90%, 100%
+		opacity: 0
+		transform: translate3d(-100%, 0, 0)
+
++keyframes(fadeOutRight)
+	0%
+		opacity: 1
+	90%, 100%
+		opacity: 0
+		transform: translate3d(100%, 0, 0)
+
++keyframes(fadeInLeft)
+	0%
+		opacity: 0
+		transform: translate3d(-100%, 0, 0)
+	90%, 100%
+		opacity: 1
+		transform: none
+
++keyframes(fadeInRight)
+	0%
+		opacity: 0
+		transform: translate3d(100%, 0, 0)
+	90%, 100%
+		opacity: 1
+		transform: none
+
+.fadeOutLeft
+	animation: fadeOutLeft 1s
+.fadeOutRight
+	animation: fadeOutRight 1s
+.fadeInLeft
+	animation: fadeInLeft 1s
+.fadeInRight
+	animation: fadeInRight 1s
+.hidden
+	display: none
+	
+//Main
 
 main
 	display: flex
 	justify-content: center
 	align-items: center
-	height: 100vh
+	min-height: 100vh
+	+background-gradient(#C18CBE, #A3DED7)
 	#user-settings
-		background-color: white
+		margin: 0
 		padding: 30px
 		border-radius: 5px
 		width: 700px
@@ -42,3 +82,4 @@ main
 			left: 85px
 			p label
 				color: #7B7B7B
+
