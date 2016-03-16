@@ -1,5 +1,5 @@
 $('#party-level').blur(function(){
-	constrainNumberInput(this, 0, 20);
+	constrainNumberInput(this, dungeon.build_info.min_apl, dungeon.build_info.max_apl);
 });
 
 $('#generate-dungeon-btn').click(function(){

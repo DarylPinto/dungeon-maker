@@ -6,6 +6,31 @@ https://docs.google.com/spreadsheets/d/1gJj7eydUiJz0bc5oyz3m3YTBT1AkTy1npNHteQDD
 https://docs.google.com/spreadsheets/d/1njy4hq8C7HfXLcd-qtXz4p3FYp10LE9_qn5cHbaq5l0/edit#gid=0
 */
 
+/*Bookmarklet
+jQuery.fn.justtext = function() {
+
+    return $(this).clone()
+            .children()
+            .remove()
+            .end()
+            .text();
+};
+function noTrailingSpace(str){
+	if(str[str.length - 1] === ' ') str = str.slice(0, str.length - 1);
+	return str;
+}
+var container = document.createElement('div');
+$('.stat-block-title').each(function(){
+	$(this).children().remove();
+	var monster_name = noTrailingSpace($(this).justtext());
+	var xp = $(this).next('.stat-block-xp').text().replace(/\D/g, '');
+	var p = document.createElement('p');
+	p.textContent = "new Monster( '"+monster_name+"', "+xp+", [''] ),";
+	container.appendChild(p);
+});
+document.write('');
+document.appendChild(container);
+*/
 
 ///////////////////////
 // Utility functions //
@@ -77,8 +102,8 @@ function save_settings(){
 	//Prevent Average Party Level in GUI from going over maximum (20) or under 0
 	if( parseInt($('#party-level').val()) > dungeon.build_info.max_apl ){
 		$('#party-level').val(dungeon.build_info.max_apl);
-	}else if( parseInt($('#party-level').val()) < 0 ){
-		$('#party-level').val(0);
+	}else if( parseInt($('#party-level').val()) < dungeon.build_info.min_apl ){
+		$('#party-level').val(dungeon.build_info.min_apl);
 	}
 	
 	//Average Party level (int)
