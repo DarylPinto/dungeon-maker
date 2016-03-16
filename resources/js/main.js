@@ -68,16 +68,16 @@ function constrainNumberInput(el, min, max){
 dungeon.settings = new Object();
 
 //Data object containing randomly generated dungeon
-dungeon.data = new Object();
+dungeon.generated = new Object();
 
 //Save settings from GUI into a data object (dungeon.settings)
 function save_settings(){
 
 	//Prevent Average Party Level in GUI from going over maximum (20) or under 0
-	if( parseInt($('#party-level').val()) > dungeon.build_info.max_apl ){
-		$('#party-level').val(dungeon.build_info.max_apl);
-	}else if( parseInt($('#party-level').val()) < dungeon.build_info.min_apl ){
-		$('#party-level').val(dungeon.build_info.min_apl);
+	if( parseInt($('#party-level').val()) > dungeon.data.max_apl ){
+		$('#party-level').val(dungeon.data.max_apl);
+	}else if( parseInt($('#party-level').val()) < dungeon.data.min_apl ){
+		$('#party-level').val(dungeon.data.min_apl);
 	}
 	
 	//Average Party level (int)
@@ -121,28 +121,28 @@ function setDungeonDifficulty(){
 	}
 
 	//Save random difficulty determined above
-	dungeon.data.difficulty = selected_difficulty;
+	dungeon.generated.difficulty = selected_difficulty;
 
 	//Save challenge rating by adding challenge modifier for
 	//selected difficulty to APL	
-	dungeon.data.cr = dungeon.settings.apl + challenge_modifier[selected_difficulty];
+	dungeon.generated.cr = dungeon.settings.apl + challenge_modifier[selected_difficulty];
 
 	//Prevent challenge rating from going over maximum CR or under 0
-	var max_cr = dungeon.build_info.max_xp_for_cr.length - 1;
-	if(dungeon.data.cr < 0) dungeon.data.cr = 0;
-	if(dungeon.data.cr > max_cr) dungeon.data.cr = max_cr;
+	var max_cr = dungeon.data.xp_limit_for_cr.length - 1;
+	if(dungeon.generated.cr < 0) dungeon.generated.cr = 0;
+	if(dungeon.generated.cr > max_cr) dungeon.generated.cr = max_cr;
 
 }
 
 function setBiome(){
 
-	var biome_pool = dungeon.build_info.biomes.basic;
+	var biome_pool = dungeon.data.biomes.basic;
 	var selected_biomes = [];
 
 	//If advanced biomes are toggled on, add them to the pool of potential biomes
 	if(dungeon.settings.advanced_biomes === true){
-		biome_pool = dungeon.build_info.biomes.basic
-			.concat(dungeon.build_info.biomes.advanced);
+		biome_pool = dungeon.data.biomes.basic
+			.concat(dungeon.data.biomes.advanced);
 	}
 
 	//Add a random biome
@@ -154,7 +154,7 @@ function setBiome(){
 	}
 
 	//Save selected biomes
-	dungeon.data.biomes = selected_biomes;
+	dungeon.generated.biomes = selected_biomes;
 
 }
 
@@ -169,5 +169,5 @@ function main(){
 	setBiome();
 
 	//Log generated dungeon to console
-	console.log(dungeon.data);
+	console.log(dungeon.generated);
 }
