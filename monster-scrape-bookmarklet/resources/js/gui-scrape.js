@@ -17,10 +17,10 @@ function Monster(name, xp, residing_biomes, url_snippet){
 	this.url_snippet = url_snippet;
 }
 
-//Remove base URL and content after #
+//Remove base URL and content after .html
 function stripURL(str){
 	str = str.replace('http://paizo.com/pathfinderRPG/prd/', '');
-	return str.slice(0, str.indexOf('#'));
+	return str.slice(0, str.indexOf('.html'));
 }
 
 //Get Monster Object via name
