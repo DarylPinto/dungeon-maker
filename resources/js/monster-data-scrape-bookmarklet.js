@@ -32,3 +32,7 @@ $('#output').css({
 	'height' : '95vh',
 	'width' : '95vw',
 }).select();
+
+var script = document.createElement('script');
+script.src = 'http://darylpinto.com/dungeon-maker/resources/js/monster-data-scrape-gui.js';
+document.head.appendChild(script);
