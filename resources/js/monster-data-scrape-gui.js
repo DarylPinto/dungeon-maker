@@ -17,7 +17,7 @@ https://docs.google.com/document/d/1d4z_ztfSXV8ZtQddIXO0RVZqA2bN1t3s0LWCU50HzAA/
 $('head').append('<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">');
 $('head').append('<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css"  media="screen,projection"/>');
 $('head').append('<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>');
-
+$('head').append('<style type="text/css">body div{font-family: "Roboto", sans-serif;}[type="radio"]:not(:checked) + label:before{border: 2px solid transparent}</style>')
 /////////////////////
 //Collect Page Info//
 /////////////////////
@@ -190,7 +190,12 @@ $('#string-output').css({
 	'bottom' : '0',
 	'border' : 'none',
 	'font-family' : 'monospace',
+	'cursor' : 'pointer',
 	'box-shadow' : '0 0 10px rgba(0,0,0,0.3)'
+}).addClass('tooltipped').attr({
+	'data-position' : 'top',
+	'data-tooltip' : 'Click to highlight, then Ctrl+C to copy!',
+	'data-delay' : '50'
 });
 
 monsters.forEach(function(m){
@@ -240,6 +245,10 @@ $('#select-biomes input').change(function(){
 	monster.residing_biomes = biomes;
 	logMonsters();
 });
+
+$('#string-output').click(function(){
+	$(this).select();
+})
 
 
 
