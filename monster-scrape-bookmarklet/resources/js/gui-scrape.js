@@ -71,8 +71,8 @@ var html = [
 ].join('');
 
 var biomes = {	
-	basic: ['Acidic', 'Air', 'Beach', 'Blue', 'Classic', 'Darkness', 'Earth', 'Electric', 'Fire', 'Forrested', 'Frosted', 'Green', 'Insulated', 'Light', 'Masterwork', 'Metallic', 'Mountains', 'Orange', 'Plains', 'Red', 'Shadow', 'Sonic', 'Violet', 'Water', 'Yellow'],
-	advanced: ['Angelic', 'Astral', 'Automotive', 'Bouncing', 'Chaotic', 'Clockwork', 'Copyright', 'Dank', 'Demonic', 'Draconic', 'Eldritch', 'Etheral', 'Fairy', 'Gilded', 'Industrial', 'Lunar', 'Orderly', 'Pixel', 'Plasma', 'Spatial', 'Stellar', 'Temporal', 'Urban', 'Vicordian', 'Void']
+	basic: ['Acidic', 'Air', 'Beach', 'Blue', 'Classic', 'Darkness', 'Earth', 'Electric', 'Fire', 'Forested', 'Frosted', 'Green', 'Insulated', 'Light', 'Masterwork', 'Metallic', 'Mountains', 'Orange', 'Plains', 'Red', 'Shadow', 'Sonic', 'Violet', 'Water', 'Yellow'],
+	advanced: ['Angelic', 'Astral', 'Bouncing', 'Chaotic', 'Clockwork', 'Copyright', 'Dank', 'Demonic', 'Devilish', 'Draconic', 'Eldritch', 'Etheral', 'Fairy', 'Gilded', 'Industrial', 'Lunar', 'Orderly', 'Pixel', 'Plasma', 'Spatial', 'Stellar', 'Temporal', 'Urban', 'Vicordian', 'Void']
 }
 
 var monsters = [];

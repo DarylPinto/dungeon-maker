@@ -82,7 +82,7 @@ dungeon.data = new Object();
 			'Temporal',
 			'Spatial',
 			'Dank',
-			'Automotive',
+			'Devilish',
 			'Stellar',
 			'Lunar',
 			'Vicordian',
