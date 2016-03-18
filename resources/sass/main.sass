@@ -17,19 +17,19 @@ input[type=number]::-webkit-outer-spin-button
 		opacity: 1
 	90%, 100%
 		opacity: 0
-		transform: translate3d(-100%, 0, 0)
+		transform: translate3d(-70vw, 0, 0)
 
 +keyframes(fadeOutRight)
 	0%
 		opacity: 1
 	90%, 100%
 		opacity: 0
-		transform: translate3d(100%, 0, 0)
+		transform: translate3d(70vw, 0, 0)
 
 +keyframes(fadeInLeft)
 	0%
 		opacity: 0
-		transform: translate3d(-100%, 0, 0)
+		transform: translate3d(-70vw, 0, 0)
 	90%, 100%
 		opacity: 1
 		transform: none
@@ -37,7 +37,7 @@ input[type=number]::-webkit-outer-spin-button
 +keyframes(fadeInRight)
 	0%
 		opacity: 0
-		transform: translate3d(100%, 0, 0)
+		transform: translate3d(70vw, 0, 0)
 	90%, 100%
 		opacity: 1
 		transform: none
@@ -55,31 +55,40 @@ input[type=number]::-webkit-outer-spin-button
 	
 //Main
 
+body
+	overflow-x: hidden
+
 main
 	display: flex
 	justify-content: center
 	align-items: center
 	min-height: 100vh
 	+background-gradient(#C18CBE, #A3DED7)
-	#user-settings
-		margin: 0
-		padding: 30px
-		border-radius: 5px
-		width: 700px
-		text-align: center
-		.col
-			text-align: left
-		.input-field, h6
-			margin-bottom: 30px
-		.switch
-			margin-bottom: 55px
-		.switch-label
-			display: inline-block
-			min-width: 140px
-			color: #7B7B7B
-		#difficulty-selection
-			position: relative
-			left: 85px
-			p label
-				color: #7B7B7B
+	background-attachment: fixed
 
+#user-settings
+	margin: 0
+	padding: 30px
+	border-radius: 5px
+	width: 700px
+	text-align: center
+	.col
+		text-align: left
+	.input-field, h6
+		margin-bottom: 30px
+	.switch
+		margin-bottom: 55px
+	.switch-label
+		display: inline-block
+		min-width: 140px
+		color: #7B7B7B
+	#difficulty-selection
+		position: relative
+		left: 85px
+		p label
+			color: #7B7B7B
+
+#generated-dungeon
+	height: 700px
+	width: 700px
+	border-radius: 5px

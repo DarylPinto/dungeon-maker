@@ -59,16 +59,39 @@ function constrainNumberInput(el, min, max){
 }
 
 function shiftLeft(){
+
+	//Fade settings out left
 	$('#user-settings').addClass('fadeOutLeft');
+	//Show dungeon and fade in right
+	$('#generated-dungeon').removeClass('hidden');
+	$('#generated-dungeon').addClass('fadeInRight');
+
 	window.setTimeout(function(){
+
+		//Hide settings and remove fade classes
 		$('#user-settings').addClass('hidden');	
+		$('#user-settings').removeClass('fadeOutLeft');
+		$('#generated-dungeon').removeClass('fadeInRight');
+
 	}, 950);
 }
 
 function shiftRight(){
-	$('#user-settings').removeClass('fadeOutLeft');
+
+	//Fade dungeon out right
+	$('#generated-dungeon').addClass('fadeOutRight');
+	//Show settings and fade in left
+	$('#user-settings').removeClass('hidden');	
+	$('#user-settings').addClass('fadeInLeft');
+
+
 	window.setTimeout(function(){
-		$('#user-settings').addClass('hidden');	
+
+		//Remove settings fade class
+		$('#generated-dungeon').addClass('hidden');
+		$('#generated-dungeon').removeClass('fadeOutRight');
+		$('#user-settings').removeClass('fadeInLeft');
+
 	}, 950);
 }
 
@@ -180,6 +203,9 @@ function main(){
 	setDungeonDifficulty();
 
 	setBiome();
+
+	//Hide dungeon settings card
+	shiftLeft();
 
 	//Log generated dungeon to console
 	console.log(dungeon.generated);
