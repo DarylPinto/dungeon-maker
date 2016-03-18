@@ -58,45 +58,24 @@ function constrainNumberInput(el, min, max){
 	if( parseInt(el.value) > max ) el.value = max;
 }
 
-function shiftLeft(){
+function transitionCard(){
 
-	//Fade settings out left
-	$('#user-settings').addClass('fadeOutLeft');
-	//Show dungeon and fade in right
-	$('#generated-dungeon').removeClass('hidden');
-	$('#generated-dungeon').addClass('fadeInRight');
-
-	window.setTimeout(function(){
-
-		//Hide settings and remove fade classes
-		$('#user-settings').addClass('hidden');	
-		$('#user-settings').removeClass('fadeOutLeft');
-		$('#generated-dungeon').removeClass('fadeInRight');
-
-	}, 950);
-}
-
-function shiftRight(){
-
-	//Fade dungeon out right
-	$('#generated-dungeon').addClass('fadeOutRight');
-	//Show settings and fade in left
-	$('#user-settings').removeClass('hidden');	
-	$('#user-settings').addClass('fadeInLeft');
-
+	var card_height = $('#user-settings').innerHeight();
+	var btn_height = $('#generate-dungeon-btn').outerHeight();
+	var card_bottom_padding = parseInt($('#user-settings').css('padding-bottom'));
+	var center_offset = card_height / 2 - btn_height / 2 - card_bottom_padding;
+	$('#user-settings').addClass('controls-hidden');
 
 	window.setTimeout(function(){
-
-		//Remove settings fade class
-		$('#generated-dungeon').addClass('hidden');
-		$('#generated-dungeon').removeClass('fadeOutRight');
-		$('#user-settings').removeClass('fadeInLeft');
-
-	}, 950);
+		$('#generate-dungeon-btn').css('transform', 'translateY(-'+center_offset+'px)');
+	}, 350);
+	window.setTimeout(function(){
+		$('#generate-dungeon-btn').addClass('growing');
+	}, 650);
 }
 
 ////////////////////
-// Main Functions //
+// Main Functions //;
 ////////////////////
 
 
@@ -204,8 +183,8 @@ function main(){
 
 	setBiome();
 
-	//Hide dungeon settings card
-	shiftLeft();
+	//Transition view from settings to generated dungeon
+	transitionCard();
 
 	//Log generated dungeon to console
 	console.log(dungeon.generated);

@@ -72,6 +72,8 @@ main
 	border-radius: 5px
 	width: 700px
 	text-align: center
+	.btn
+		position: relative
 	.col
 		text-align: left
 	.input-field, h6
@@ -88,7 +90,27 @@ main
 		p label
 			color: #7B7B7B
 
-#generated-dungeon
-	height: 700px
-	width: 700px
-	border-radius: 5px
+//Material transition
+#user-settings
+	&.controls-hidden
+		overflow: hidden
+		*
+			transition: .3s
+			&:not(.btn)
+				opacity: 0	
+		.btn
+			background-color: #2bbbad
+			&::after
+				content: ''
+				display: inline-block
+				position: absolute
+				top: -480px
+				left: -390px
+				background-color: inherit
+				border-radius: 100%
+				height: 1000px
+				width: 1000px
+				transition: transform .5s
+				transform: scale(0.005)
+			&.growing::after	
+				transform: scale(1)
