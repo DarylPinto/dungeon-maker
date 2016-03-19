@@ -60,16 +60,12 @@ function constrainNumberInput(el, min, max){
 
 function transitionCard(){
 
-	var card_height = $('#user-settings').innerHeight();
-	var btn_height = $('#generate-dungeon-btn').outerHeight();
-	var card_bottom_padding = parseInt($('#user-settings').css('padding-bottom'));
-	var center_offset = card_height / 2 - btn_height / 2 - card_bottom_padding;
+	$('#generate-dungeon-btn').css('transform', 'translateY(-120px)');
 	$('#user-settings').addClass('controls-hidden');
-		$('#generate-dungeon-btn').css('transform', 'translateY(-'+center_offset+'px)');
 
 	window.setTimeout(function(){
 		$('#generate-dungeon-btn').addClass('growing');
-	}, 350);
+	}, 10);
 }
 
 ////////////////////
