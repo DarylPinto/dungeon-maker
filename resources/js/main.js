@@ -65,13 +65,11 @@ function transitionCard(){
 	var card_bottom_padding = parseInt($('#user-settings').css('padding-bottom'));
 	var center_offset = card_height / 2 - btn_height / 2 - card_bottom_padding;
 	$('#user-settings').addClass('controls-hidden');
+		$('#generate-dungeon-btn').css('transform', 'translateY(-'+center_offset+'px)');
 
 	window.setTimeout(function(){
-		$('#generate-dungeon-btn').css('transform', 'translateY(-'+center_offset+'px)');
-	}, 350);
-	window.setTimeout(function(){
 		$('#generate-dungeon-btn').addClass('growing');
-	}, 650);
+	}, 350);
 }
 
 ////////////////////

@@ -1,58 +1,31 @@
 @import _mixins
 
+$hover-teal: #2bbbad
+
 //Overwrite Materialize.css
 
 .input-field label
 	left: 0
 
 input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button 
+input[type=number]::-webkit-outer-spin-button
 	-webkit-appearance: none
 	margin: 0
 
-//Animations courtesy of animatecss :: daneden.github.io/animate.css
-
-+keyframes(fadeOutLeft)
-	0%
-		opacity: 1
-	90%, 100%
-		opacity: 0
-		transform: translate3d(-70vw, 0, 0)
-
-+keyframes(fadeOutRight)
-	0%
-		opacity: 1
-	90%, 100%
-		opacity: 0
-		transform: translate3d(70vw, 0, 0)
-
-+keyframes(fadeInLeft)
-	0%
-		opacity: 0
-		transform: translate3d(-70vw, 0, 0)
-	90%, 100%
-		opacity: 1
-		transform: none
-
-+keyframes(fadeInRight)
-	0%
-		opacity: 0
-		transform: translate3d(70vw, 0, 0)
-	90%, 100%
-		opacity: 1
-		transform: none
-
-.fadeOutLeft
-	animation: fadeOutLeft 1s
-.fadeOutRight
-	animation: fadeOutRight 1s
-.fadeInLeft
-	animation: fadeInLeft 1s
-.fadeInRight
-	animation: fadeInRight 1s
-.hidden
-	display: none
+input[type=number]
+	-moz-appearance: textfield
 	
+//Animations
+
++keyframes(fadeCardToWhite)
+	0%
+		background-color: $hover-teal
+	40%
+		background-color: $hover-teal
+	100%
+		background-color: white
+
+
 //Main
 
 body
@@ -62,8 +35,8 @@ main
 	display: flex
 	justify-content: center
 	align-items: center
-	min-height: 100vh
-	+background-gradient(#C18CBE, #A3DED7)
+	height: 100vh
+	+background-gradient(#DEC3DD, #C3E2DF)
 	background-attachment: fixed
 
 #user-settings
@@ -94,12 +67,13 @@ main
 #user-settings
 	&.controls-hidden
 		overflow: hidden
+		-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC)
 		*
 			transition: .3s
 			&:not(.btn)
 				opacity: 0	
 		.btn
-			background-color: #2bbbad
+			background-color: $hover-teal
 			&::after
 				content: ''
 				display: inline-block
@@ -114,3 +88,5 @@ main
 				transform: scale(0.005)
 			&.growing::after	
 				transform: scale(1)
+				background-color: white
+				animation: fadeCardToWhite 1s
