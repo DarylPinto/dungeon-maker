@@ -37,94 +37,99 @@
 
 	<main>
 		
-		<div id="user-settings" class="card" role="form">
-			<div class="input-field">
-				<input type="number" id="party-level" min="0" max="20" value="1">
-				<label for="party-level">Average Party Level</label>	
-			</div>
-			<div class="row">
+		<div id="main-card" class="card">
 
-				<div class="col s6">
-				
-					<h6>Dungeon Features</h6>
-	
-					<!-- Material Switch -->
-					<div class="switch" id="trap-toggle">
-						<span class="switch-label">Traps</span>
-						<label>
-							No
-							<input type="checkbox">
-							<span class="lever"></span>
-							Maybe
-						</label>
-					</div>
-					
-					<!-- Material Switch -->
-					<div class="switch" id="biome-advanced-toggle">
-						<span class="switch-label">Advanced Biomes</span>
-						<label>
-							No
-							<input type="checkbox">
-							<span class="lever"></span>
-							Maybe
-						</label>
-					</div>
-					
-					<!-- Material Switch -->
-					<div class="switch" id="multi-biome-toggle">
-						<span class="switch-label">Multi-Biome</span>
-						<label>
-							No
-							<input type="checkbox">
-							<span class="lever"></span>
-							Yes
-						</label>
-					</div>
-
+			<div id="user-settings" role="form">
+				<div class="input-field">
+					<input type="number" id="party-level" min="0" max="20" value="1">
+					<label for="party-level">Average Party Level</label>	
 				</div>
-				<div class="col s6" id="difficulty-selection">
-					
-					<h6>Potential Difficulties</h6>
-					
-					<!-- Material Checkbox -->
-					<p>
-						<input type="checkbox" class="filled-in" id="easy-dungeon" />
-						<label for="easy-dungeon">Easy</label>
-					</p>
-					
-					<!-- Material Checkbox -->
-					<p>
-						<input type="checkbox" class="filled-in" id="average-dungeon" checked="checked" />
-						<label for="average-dungeon">Average</label>
-					</p>
-					
-					<!-- Material Checkbox -->
-					<p>
-						<input type="checkbox" class="filled-in" id="challenging-dungeon" checked="checked" />
-						<label for="challenging-dungeon">Challenging</label>
-					</p>
-					
-					<!-- Material Checkbox -->
-					<p>
-						<input type="checkbox" class="filled-in" id="hard-dungeon" checked="checked" />
-						<label for="hard-dungeon">Hard</label>
-					</p>
-					
-					<!-- Material Checkbox -->
-					<p>
-						<input type="checkbox" class="filled-in" id="epic-dungeon" />
-						<label for="epic-dungeon">Epic</label>
-					</p>
+				<div class="row">
 
-				</div>
-			</div>
-
-			<!-- Material Button -->
-			<div class="btn" id="generate-dungeon-btn">
-				<span>Generate Dungeon</span>
-			</div>
+					<div class="col s6">
+					
+						<h6>Dungeon Features</h6>
 			
+						<!-- Material Switch -->
+						<div class="switch" id="trap-toggle">
+							<span class="switch-label">Traps</span>
+							<label>
+								No
+								<input type="checkbox">
+								<span class="lever"></span>
+								Maybe
+							</label>
+						</div>
+						
+						<!-- Material Switch -->
+						<div class="switch" id="biome-advanced-toggle">
+							<span class="switch-label">Advanced Biomes</span>
+							<label>
+								No
+								<input type="checkbox">
+								<span class="lever"></span>
+								Maybe
+							</label>
+						</div>
+						
+						<!-- Material Switch -->
+						<div class="switch" id="multi-biome-toggle">
+							<span class="switch-label">Multi-Biome</span>
+							<label>
+								No
+								<input type="checkbox">
+								<span class="lever"></span>
+								Yes
+							</label>
+						</div>
+
+					</div>
+					<div class="col s6" id="difficulty-selection">
+						
+						<h6>Potential Difficulties</h6>
+						
+						<!-- Material Checkbox -->
+						<p>
+							<input type="checkbox" class="filled-in" id="easy-dungeon" />
+							<label for="easy-dungeon">Easy</label>
+						</p>
+						
+						<!-- Material Checkbox -->
+						<p>
+							<input type="checkbox" class="filled-in" id="average-dungeon" checked="checked" />
+							<label for="average-dungeon">Average</label>
+						</p>
+						
+						<!-- Material Checkbox -->
+						<p>
+							<input type="checkbox" class="filled-in" id="challenging-dungeon" checked="checked" />
+							<label for="challenging-dungeon">Challenging</label>
+						</p>
+						
+						<!-- Material Checkbox -->
+						<p>
+							<input type="checkbox" class="filled-in" id="hard-dungeon" checked="checked" />
+							<label for="hard-dungeon">Hard</label>
+						</p>
+						
+						<!-- Material Checkbox -->
+						<p>
+							<input type="checkbox" class="filled-in" id="epic-dungeon" />
+							<label for="epic-dungeon">Epic</label>
+						</p>
+
+					</div>
+				</div>
+
+				<!-- Material Button -->
+				<div class="btn" id="generate-dungeon-btn">
+					<span>Generate Dungeon</span>
+				</div>
+				
+			</div>
+
 		</div>
+		
 
 	</main>
 

@@ -49,7 +49,7 @@ dungeon.data = new Object();
 			'Light',
 			'Shadow',
 			'Darkness',
-			'Forrested',
+			'Forested',
 			'Plains',
 			'Beach',
 			'Metallic',

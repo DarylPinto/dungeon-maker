@@ -30,6 +30,69 @@ function getNumberOfItemsIn(array){
 	return count;
 }
 
+//Search through Monster database and find monster with name property: `name`
+function getMonsterByName(name){
+	var monster = null;
+	dungeon.data.monster_db.forEach(function(m){
+		if(m.name === name){
+			monster = m;
+		}
+	});
+	return monster;
+}
+
+//Search through any array of Monster objects, return the one with the lowest xp
+function weakestMonsterIn(monster_arr){
+	//Choose first monster for comparison
+	var weakest = monster_arr[0];
+	//For every monster, if they have less xp than current weakest
+	//set them to be the new weakest
+	monster_arr.forEach(function(monster){
+		if(monster.xp < weakest.xp) weakest = monster;
+	});
+	return weakest;
+}
+
+//Search through array of Monster objects (`monster_arr`) returning
+//one with the highest xp that's still lower or equal to `max_xp`
+function strongestMonsterLessXpThan(max_xp, monster_arr){
+	//Choose weakest monster for comparison
+	var strongest = weakestMonsterIn(monster_arr);
+	//For every monster, if they have more xp than current strongest
+	//set them to be the new strongest
+	monster_arr.forEach(function(monster){
+		if(monster.xp > strongest.xp && monster.xp <= max_xp) strongest = monster;
+	});
+	return strongest;
+}
+
+//Monsters from monster_db that match an array of biomes
+function monstersResidingIn(biomeArr){
+	var filtered = dungeon.data.monster_db.filter(function(monster){
+		var monster_qualifies = false;
+		biomeArr.forEach(function(biome){
+			if(monster.residing_biomes.indexOf(biome) > -1){
+				monster_qualifies = true;
+			}
+		});
+		return monster_qualifies;
+	});
+	if(filtered.length === 0){
+		throw "Error: No monsters match dungeon's biome(s)";
+	}
+	return filtered;
+}
+
+//Test to see how close dungeon xp approaches max_xp for challenge rating
+function XP_test(){
+	var max = dungeon.data.xp_limit_for_cr[dungeon.generated.cr];
+	var current = 0;
+	dungeon.generated.monsters.forEach(function(m){
+		current += m.xp;
+	});
+	console.log('Max XP: ' + max.toString() + ', Dungeon XP: ' + current.toString() + ', Max - Current = ' + (max - current).toString());
+}
+
 //////////////////////
 // DOM manipulation //
 //////////////////////
@@ -69,7 +132,7 @@ function transitionCard(){
 }
 
 ////////////////////
-// Main Functions //;
+// Main Functions //
 ////////////////////
 
 
@@ -167,6 +230,73 @@ function setBiome(){
 
 }
 
+//Add monsters to the dungeon
+function populateDungeon(){
+	var biomes = dungeon.generated.biomes;
+	var xp_limit = dungeon.data.xp_limit_for_cr[dungeon.generated.cr];
+	var total_xp = 0;
+	var monster_pool = monstersResidingIn(biomes);
+	var weakest = weakestMonsterIn(monster_pool);
+
+	dungeon.generated.monsters = [];
+
+	//Add monsters until there's no room for any more (based on max xp for dungeon)
+	while(xp_limit - total_xp > weakest.xp){
+		var xp_remaining = xp_limit - total_xp;
+
+		//Randomly select monster from pool
+		var added_monster = randItemFrom(monster_pool);
+
+		//If random monster's XP would put it over the xp cap,
+		//Replace it with another random monster
+		if(added_monster.xp > xp_remaining){
+			added_monster = strongestMonsterLessXpThan(xp_remaining, monster_pool);
+		}
+
+		//Add selected monster
+		dungeon.generated.monsters.push(added_monster);
+		//Increment total dungeon xp
+		total_xp += added_monster.xp;
+	}
+
+	//If dungeon has no monsters because xp limit is too low,
+	//add weakest monster from the monster pool so there is at least
+	//one thing to fight
+	if(dungeon.generated.monsters.length === 0){
+		dungeon.generated.monsters.push(weakest);
+	}
+}
+
+//Array of Objects containing monster amount/name and their respective links
+//NOTE: Does not return array of actual Monster objects, just manipulated data for displaying on page
+function setFormattedMonsters(){
+
+	var formatted_monsters = [];
+
+	var monsters_with_amounts = getNumberOfItemsIn(dungeon.generated.monsters.map(function(m){
+		return m.name;
+	}));
+
+	for(amount in monsters_with_amounts){
+		if(monsters_with_amounts.hasOwnProperty(amount)){
+			if(monsters_with_amounts[amount] === 1){
+				formatted_monsters.push({
+					text: amount,
+					link: getMonsterByName(amount).wiki
+				});
+			}else{
+				formatted_monsters.push({
+					text: monsters_with_amounts[amount] + ' ' + amount + 's',
+					link: getMonsterByName(amount).wiki
+				});
+			}
+		}
+	}
+
+	dungeon.generated.formatted_monsters = formatted_monsters;
+
+}
+
 //Main function
 function main(){
 
@@ -176,6 +306,10 @@ function main(){
 	setDungeonDifficulty();
 
 	setBiome();
+
+	populateDungeon();
+
+	setFormattedMonsters();
 
 	//Transition view from settings to generated dungeon
 	transitionCard();
