@@ -131,6 +131,14 @@ function transitionCard(){
 	}, 10);
 }
 
+function changeBackgroundColorToMatchBiome(biomeColorArr){
+	if(biomeColorArr.length === 1){
+		$('main').css('background-color', color1);
+	}else{
+		$('main').css('background' : 'linear-gradient('+color1+','+color2+')');
+	}
+}
+
 ////////////////////
 // Main Functions //
 ////////////////////
@@ -218,11 +226,11 @@ function setBiome(){
 	}
 
 	//Add a random biome
-	selected_biomes.push( randItemFrom(biome_pool) );
+	selected_biomes.push( randItemFrom(biome_pool).name );
 
 	//If multi-biome is enabled add another random biome
 	if(dungeon.settings.multi_biomes === true){
-		selected_biomes.push( randItemFrom(biome_pool) );
+		selected_biomes.push( randItemFrom(biome_pool).name );
 	}
 
 	//Save selected biomes
@@ -313,6 +321,10 @@ function main(){
 
 	//Transition view from settings to generated dungeon
 	transitionCard();
+
+	changeBackgroundColorToMatchBiome(dungeon.generated.biomes.map(function(biome){
+		return biome.color;
+	}));
 
 	//Log generated dungeon to console
 	console.log(dungeon.generated);
