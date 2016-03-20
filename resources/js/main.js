@@ -133,10 +133,13 @@ function transitionCard(){
 
 function changeBackgroundColorToMatchBiome(biomeColorArr){
 	if(biomeColorArr.length === 1){
-		$('main').css('background-color', color1);
+		$('body').css('background-color', biomeColorArr[0]);
 	}else{
-		$('main').css('background' : 'linear-gradient('+color1+','+color2+')');
+		$('body').css('background', 'linear-gradient('+biomeColorArr[0]+','+biomeColorArr[1]+')');
 	}
+	window.setTimeout(function(){
+		$('main').css('background', 'transparent');
+	}, 200);
 }
 
 ////////////////////
@@ -226,11 +229,11 @@ function setBiome(){
 	}
 
 	//Add a random biome
-	selected_biomes.push( randItemFrom(biome_pool).name );
+	selected_biomes.push( randItemFrom(biome_pool) );
 
 	//If multi-biome is enabled add another random biome
 	if(dungeon.settings.multi_biomes === true){
-		selected_biomes.push( randItemFrom(biome_pool).name );
+		selected_biomes.push( randItemFrom(biome_pool) );
 	}
 
 	//Save selected biomes
@@ -240,7 +243,9 @@ function setBiome(){
 
 //Add monsters to the dungeon
 function populateDungeon(){
-	var biomes = dungeon.generated.biomes;
+	var biomes = dungeon.generated.biomes.map(function(biome){
+		return biome.name;
+	});
 	var xp_limit = dungeon.data.xp_limit_for_cr[dungeon.generated.cr];
 	var total_xp = 0;
 	var monster_pool = monstersResidingIn(biomes);

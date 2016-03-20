@@ -51,7 +51,7 @@ dungeon.data = new Object();
 			new Biome('Air',        '#DEDEDE'),
 			new Biome('Fire',       '#FFB08A'),
 			new Biome('Water',      '#A9E7F9'),
-			new Biome('Light',      '#FFF6B2 '),
+			new Biome('Light',      '#FFF6B2'),
 			new Biome('Shadow',     '#3A3A3A'),
 			new Biome('Darkness',   '#1F082D'),
 			new Biome('Forested',   '#74BD7D'),
