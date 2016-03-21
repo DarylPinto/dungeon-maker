@@ -93,6 +93,50 @@ function XP_test(){
 	console.log('Max XP: ' + max.toString() + ', Dungeon XP: ' + current.toString() + ', Max - Current = ' + (max - current).toString());
 }
 
+//Normalize names with commas and
+//optionally pluralify them
+//"Agathion, Vulpinal" => "Vulpinal Agathions"
+function formatName(name, isPlural){
+
+	isPlural = (typeof isPlural === 'undefined') ? false : isPlural;
+	var endsWithBracket = false;
+
+	//Identify is something has a comma in it such as:
+	//"Amoeba, Giant" and normalize the name to
+	//"Giant Amoeba"
+	if(name.indexOf(', ') > -1){
+		name = name.split(', ');
+		name.reverse();
+		name = name.join(' ');
+	}
+
+	//Identify if a name ends with something in brackets so that
+	//"Dire Ape (Gigantopithecus)" becomes
+	//"Dire Apes (Gigantopithecus)" and not
+	//"Dire Ape (Gigantopithecus)s"
+	if(name[name.length - 1] === ')'){
+		endsWithBracket = true;
+		var bracket_text = name.substr(name.indexOf('('));
+		name = name.slice(0, name.indexOf(' ('));
+	}
+
+	//Add appropriate plural endings based on the last letter(s) of the name
+	if(isPlural){
+		if(name[name.length - 1] === 'y'){
+			name = name.substr(0, name.length - 1) + 'ies'}
+		else if(name.substr(name.length - 2) === 'ch'){
+			name = name + 'es'}
+		else if( ['s', 'z', 'x', 'i', 'j'].indexOf(name[name.length - 1]) > -1){
+			name = name + 'es'}
+		else{
+			name = name + 's'}
+	}
+
+	if(endsWithBracket) name = name + ' ' + bracket_text;
+
+	return name;
+}
+
 //////////////////////
 // DOM manipulation //
 //////////////////////
@@ -294,12 +338,12 @@ function setFormattedMonsters(){
 		if(monsters_with_amounts.hasOwnProperty(amount)){
 			if(monsters_with_amounts[amount] === 1){
 				formatted_monsters.push({
-					text: amount,
+					text: formatName(amount),
 					link: getMonsterByName(amount).wiki
 				});
 			}else{
 				formatted_monsters.push({
-					text: monsters_with_amounts[amount] + ' ' + amount + 's',
+					text: monsters_with_amounts[amount] + ' ' + formatName(amount),
 					link: getMonsterByName(amount).wiki
 				});
 			}
