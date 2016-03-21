@@ -124,9 +124,11 @@ function formatName(name, isPlural){
 	if(isPlural){
 		if(name[name.length - 1] === 'y'){
 			name = name.substr(0, name.length - 1) + 'ies'}
+		else if(name.substr(name.length - 1) === 's'){
+			name = name + 'es'}
 		else if(name.substr(name.length - 2) === 'ch'){
 			name = name + 'es'}
-		else if( ['s', 'z', 'x', 'i', 'j'].indexOf(name[name.length - 1]) > -1){
+		else if( ['z', 'x', 'i', 'j'].indexOf(name[name.length - 1]) > -1){
 			name = name + 'es'}
 		else{
 			name = name + 's'}
@@ -338,12 +340,12 @@ function setFormattedMonsters(){
 		if(monsters_with_amounts.hasOwnProperty(amount)){
 			if(monsters_with_amounts[amount] === 1){
 				formatted_monsters.push({
-					text: formatName(amount),
+					text: formatName(amount, false),
 					link: getMonsterByName(amount).wiki
 				});
 			}else{
 				formatted_monsters.push({
-					text: monsters_with_amounts[amount] + ' ' + formatName(amount),
+					text: monsters_with_amounts[amount] + ' ' + formatName(amount, true),
 					link: getMonsterByName(amount).wiki
 				});
 			}
