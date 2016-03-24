@@ -2,6 +2,7 @@
 
 $hover-teal: #2bbbad
 $dark-gray: #7B7B7B
+$light-gray: #A9A9A9
 
 //Overwrite Materialize.css
 
@@ -29,14 +30,20 @@ input[type=number]
 
 //Main
 
+html
+	height: 105vh
+
 body
 	overflow-x: hidden
+	height: 100%
+	background-attachment: fixed
+	background-repeat: no-repeat	
 
 main
 	display: flex
 	justify-content: center
 	align-items: center
-	height: 100vh
+	height: 100%
 	background-color: #ADE6E1
 	transition: .5s
 	background-attachment: fixed
@@ -85,6 +92,7 @@ main
 				opacity: 0	
 		.btn
 			background-color: $hover-teal
+			pointer-events: none
 			&::after
 				content: ''
 				display: inline-block
@@ -102,3 +110,12 @@ main
 				background-color: white
 				animation: fadeCardToWhite 1s
 
+
+//Generated dungeon
+#generated-dungeon
+	padding: 30px
+	max-height: 90vh
+	overflow: auto
+	h5
+		color: $light-gray
+		margin-left: 3px

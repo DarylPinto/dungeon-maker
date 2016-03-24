@@ -175,13 +175,14 @@ function transitionCard(){
 	window.setTimeout(function(){
 		$('#generate-dungeon-btn').addClass('growing');
 	}, 10);
+
 }
 
 function changeBackgroundColorToMatchBiome(biomeColorArr){
 	if(biomeColorArr.length === 1){
 		$('body').css('background-color', biomeColorArr[0]);
 	}else{
-		$('body').css('background', 'linear-gradient('+biomeColorArr[0]+','+biomeColorArr[1]+')');
+		$('body').css('background-image', 'linear-gradient('+biomeColorArr[0]+','+biomeColorArr[1]+')');
 	}
 	window.setTimeout(function(){
 		$('main').css('background', 'transparent');
@@ -356,26 +357,59 @@ function setFormattedMonsters(){
 
 }
 
+function displayResults(){
+
+	//Dungeon name (Biome/Biome2 Dungeon)	
+	var dungeon_name = '';
+	dungeon.generated.biomes.forEach(function(b){
+		dungeon_name = dungeon_name + '/' + b.name;
+	});
+	dungeon_name = dungeon_name + ' Dungeon';
+	if(dungeon_name[0] === '/') dungeon_name = dungeon_name.slice(1);
+
+	//Difficulty
+	var difficulty = 'Difficulty: ' + dungeon.generated.difficulty
+
+	//Display Monsters
+	dungeon.generated.formatted_monsters.forEach(function(m){
+		$('#generated-dungeon .monster-table tbody')
+			.append('<tr><td><a href="'+m.link+'" target="_blank">'+m.text+'</a></td></tr>');
+	});
+
+
+	$('#generated-dungeon .name').text(dungeon_name);
+	$('#generated-dungeon .difficulty').text(difficulty);
+}
+
 //Main function
 function main(){
 
 	//Save settings from GUI
 	save_settings();
 
+	//Set dungeon difficulty, CR and max allowed XP
 	setDungeonDifficulty();
 
+	//Set dungeon's biome(s)
 	setBiome();
 
+	//Add monsters to dungeon
 	populateDungeon();
 
+	//Format monster names (amount of monsters with each type etc.)
+	//ex. 2 Archons, 12 Locusts
 	setFormattedMonsters();
 
 	//Transition view from settings to generated dungeon
 	transitionCard();
 
+	//Update background color to match biome(s)
 	changeBackgroundColorToMatchBiome(dungeon.generated.biomes.map(function(biome){
 		return biome.color;
 	}));
+
+	//Display generated dungeon on screen
+	displayResults();
 
 	//Log generated dungeon to console
 	console.log(dungeon.generated);
