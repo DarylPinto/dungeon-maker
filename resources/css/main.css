@@ -57,7 +57,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  min-height: 100%;
   background-color: #ADE6E1;
   transition: 0.5s;
   background-attachment: fixed; }
@@ -127,7 +127,7 @@ main {
 #generated-dungeon {
   padding: 30px;
   padding-bottom: 10px;
-  max-height: 90vh;
+  max-height: 1000vh;
   overflow: auto;
   opacity: 1;
   transition: 0.6s; }
@@ -145,7 +145,10 @@ main {
     margin-top: -10px; }
   #generated-dungeon h5 {
     color: #A9A9A9;
-    margin-left: 3px; }
+    margin-left: 3px;
+    font-size: 15px;
+    margin-top: -5px;
+    font-style: italic; }
   #generated-dungeon::-webkit-scrollbar {
     width: 5px;
     margin-right: 10px; }

@@ -383,6 +383,8 @@ function displayResults(){
 	//Difficulty
 	var difficulty = 'Difficulty: ' + dungeon.generated.difficulty
 
+	var challenge_rating = 'Challenge Rating: ' + dungeon.generated.cr;
+
 	//Display Monsters
 	dungeon.generated.formatted_monsters.forEach(function(m){
 		$('#generated-dungeon .monster-table tbody')
@@ -392,6 +394,7 @@ function displayResults(){
 
 	$('#generated-dungeon .name').text(dungeon_name);
 	$('#generated-dungeon .difficulty').text(difficulty);
+	$('#generated-dungeon .challenge-rating').text(challenge_rating);
 }
 
 //Main function
