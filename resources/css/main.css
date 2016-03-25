@@ -45,7 +45,7 @@ input[type=number] {
   100% {
     background-color: white; } }
 html {
-  height: 105vh; }
+  height: 100vh; }
 
 body {
   overflow-x: hidden;
@@ -94,8 +94,10 @@ main {
     #user-settings #difficulty-selection p label {
       color: #7B7B7B; }
 
+#user-settings.hidden {
+  max-height: 0;
+  padding: 0; }
 #user-settings.controls-hidden {
-  max-height: 90vh;
   overflow: hidden;
   -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); }
   #user-settings.controls-hidden * {
@@ -124,10 +126,45 @@ main {
 
 #generated-dungeon {
   padding: 30px;
+  padding-bottom: 10px;
   max-height: 90vh;
-  overflow: auto; }
+  overflow: auto;
+  opacity: 1;
+  transition: 0.6s; }
+  #generated-dungeon.hidden {
+    opacity: 0;
+    max-height: 0;
+    width: 100%;
+    padding: 0; }
+  #generated-dungeon .row {
+    margin-bottom: 0; }
+  #generated-dungeon .col {
+    padding-left: 0; }
+  #generated-dungeon h4 {
+    margin-left: 3px;
+    margin-top: -10px; }
   #generated-dungeon h5 {
     color: #A9A9A9;
     margin-left: 3px; }
+  #generated-dungeon::-webkit-scrollbar {
+    width: 5px;
+    margin-right: 10px; }
+  #generated-dungeon::-webkit-scrollbar-track {
+    background-color: transparent; }
+  #generated-dungeon::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #A9A9A9; }
+
+table.monster-table, table.trap-table {
+  margin-top: 20px; }
+  table.monster-table td, table.trap-table td {
+    padding: 0; }
+    table.monster-table td a, table.trap-table td a {
+      transition: 0.3s;
+      color: black;
+      display: block;
+      padding: 15px 5px; }
+      table.monster-table td a:hover, table.trap-table td a:hover {
+        color: #039be5; }
 
 /*# sourceMappingURL=main.css.map */

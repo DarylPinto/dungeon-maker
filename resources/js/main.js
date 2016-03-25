@@ -169,13 +169,26 @@ function constrainNumberInput(el, min, max){
 
 function transitionCard(){
 
+	//Move button up slightly
 	$('#generate-dungeon-btn').css('transform', 'translateY(-120px)');
+	//Hide settings UI
 	$('#user-settings').addClass('controls-hidden');
 
+	//Grow button into circle for transition
 	window.setTimeout(function(){
 		$('#generate-dungeon-btn').addClass('growing');
 	}, 10);
 
+	//Hide settings, show results
+	window.setTimeout(function(){
+		$('#user-settings').addClass('hidden');
+		$('#generated-dungeon').removeClass('hidden');
+	}, 600);
+
+	//Add padding to main card so that scrollbar stands out
+	window.setTimeout(function(){
+		$('#main-card').css('padding', '15px 5px');
+	}, 700);
 }
 
 function changeBackgroundColorToMatchBiome(biomeColorArr){
@@ -410,7 +423,5 @@ function main(){
 
 	//Display generated dungeon on screen
 	displayResults();
-
-	//Log generated dungeon to console
-	console.log(dungeon.generated);
+	
 }
