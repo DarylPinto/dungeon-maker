@@ -189,6 +189,12 @@ function transitionCard(){
 	window.setTimeout(function(){
 		$('#main-card').css('padding', '15px 5px');
 	}, 700);
+
+	window.setTimeout(function(){
+		$('#generated-dungeon').css('max-height', '1000vh');
+	}, 750);
+
+
 }
 
 function changeBackgroundColorToMatchBiome(biomeColorArr){
