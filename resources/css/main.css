@@ -143,22 +143,30 @@ main {
   #generated-dungeon .col {
     padding-left: 0; }
   #generated-dungeon h4 {
-    margin-left: 3px;
-    margin-top: -10px; }
+    margin-top: -10px;
+    font-size: 50px;
+    font-weight: 100; }
   #generated-dungeon h5 {
     color: #A9A9A9;
     margin-left: 3px;
-    font-size: 15px;
-    margin-top: -5px;
+    font-size: 18px;
     font-style: italic; }
-  #generated-dungeon::-webkit-scrollbar {
-    width: 5px;
-    margin-right: 10px; }
-  #generated-dungeon::-webkit-scrollbar-track {
-    background-color: transparent; }
-  #generated-dungeon::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: #A9A9A9; }
+  #generated-dungeon h6 {
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 0;
+    padding: 15px 5px;
+    border-bottom: 1px solid #d0d0d0; }
+  #generated-dungeon #traps-list, #generated-dungeon #monsters-list {
+    margin-top: 0;
+    margin-bottom: 0; }
+    #generated-dungeon #traps-list li a, #generated-dungeon #monsters-list li a {
+      color: black;
+      padding: 15px 5px;
+      display: block;
+      transition: 0.3s; }
+      #generated-dungeon #traps-list li a:hover, #generated-dungeon #monsters-list li a:hover {
+        background-color: #f2f2f2; }
 
 table.monster-table, table.trap-table {
   margin-top: 20px; }

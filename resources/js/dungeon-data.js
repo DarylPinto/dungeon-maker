@@ -8,7 +8,7 @@ dungeon.data = new Object();
 
 	//Maximum experience points per challenge rating
 	//Use challenge rating as index to access values
-	//ex. dungeon.data.max_xp_for_cr[6] = 2400
+	//ex. dungeon.data.xp_limit_for_cr[6] = 2400
 	dungeon.data.xp_limit_for_cr = [ 
 		200,
 		400,
@@ -36,6 +36,38 @@ dungeon.data = new Object();
 		819200,
 		1228800,
 		1638400 
+	]
+
+	//Maximum GOLD points per challenge rating
+	//Use challenge rating as index to access values
+	//ex. dungeon.data.gp_limit_for_cr[6] = 3000
+	dungeon.data.gp_limit_for_cr = [ 
+		200,
+		400,
+		800,
+		1200,
+		1700,
+		2300,
+		3000,
+		3900,
+		5000,
+		6400,
+		8200,
+		10500,
+		13500,
+		17500,
+		22000,
+		29000,
+		38000,
+		48000,
+		62000,
+		79000,
+		100000,
+		135000,
+		187000,
+		223000,
+		265000,
+		300000
 	]
 
 	//Object constructor for biomes

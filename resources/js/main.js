@@ -167,7 +167,7 @@ function constrainNumberInput(el, min, max){
 	if( parseInt(el.value) > max ) el.value = max;
 }
 
-function transitionCard(){
+function transitionToGeneratedDungeon(){
 
 	//Move button up slightly
 	$('#generate-dungeon-btn').css('transform', 'translateY(-120px)');
@@ -208,10 +208,33 @@ function changeBackgroundColorToMatchBiome(biomeColorArr){
 	}, 200);
 }
 
+function displayResults(){
+
+	//Dungeon name (Biome/Biome2 Dungeon)	
+	var dungeon_name = '';
+	dungeon.generated.biomes.forEach(function(b){
+		dungeon_name = dungeon_name + '/' + b.name;
+	});
+	dungeon_name = dungeon_name + ' Dungeon';
+	if(dungeon_name[0] === '/') dungeon_name = dungeon_name.slice(1);
+
+	//Dungeon Stats
+	var difficulty = 'Difficulty: ' + dungeon.generated.difficulty;
+	var challenge_rating = 'Challenge Rating: ' + dungeon.generated.cr.toString();
+
+	//Display Monsters
+	dungeon.generated.formatted_monsters.forEach(function(m){
+		$('#monsters-list').append('<li><a href="'+m.link+'" target="_blank">'+m.text+'</a></li>');
+	});
+
+
+	$('#generated-dungeon .name').text(dungeon_name);
+	$('#generated-dungeon .stats').text( [difficulty, challenge_rating].join(', ') );
+}
+
 ////////////////////
 // Main Functions //
 ////////////////////
-
 
 //Data object containing settings from GUI
 dungeon.settings = new Object();
@@ -376,34 +399,10 @@ function setFormattedMonsters(){
 
 }
 
-function displayResults(){
+/////////////////
+//Main function//
+/////////////////
 
-	//Dungeon name (Biome/Biome2 Dungeon)	
-	var dungeon_name = '';
-	dungeon.generated.biomes.forEach(function(b){
-		dungeon_name = dungeon_name + '/' + b.name;
-	});
-	dungeon_name = dungeon_name + ' Dungeon';
-	if(dungeon_name[0] === '/') dungeon_name = dungeon_name.slice(1);
-
-	//Difficulty
-	var difficulty = 'Difficulty: ' + dungeon.generated.difficulty
-
-	var challenge_rating = 'Challenge Rating: ' + dungeon.generated.cr;
-
-	//Display Monsters
-	dungeon.generated.formatted_monsters.forEach(function(m){
-		$('#generated-dungeon .monster-table tbody')
-			.append('<tr><td><a href="'+m.link+'" target="_blank">'+m.text+'</a></td></tr>');
-	});
-
-
-	$('#generated-dungeon .name').text(dungeon_name);
-	$('#generated-dungeon .difficulty').text(difficulty);
-	$('#generated-dungeon .challenge-rating').text(challenge_rating);
-}
-
-//Main function
 function main(){
 
 	//Save settings from GUI
@@ -423,7 +422,7 @@ function main(){
 	setFormattedMonsters();
 
 	//Transition view from settings to generated dungeon
-	transitionCard();
+	transitionToGeneratedDungeon();
 
 	//Update background color to match biome(s)
 	changeBackgroundColorToMatchBiome(dungeon.generated.biomes.map(function(biome){
