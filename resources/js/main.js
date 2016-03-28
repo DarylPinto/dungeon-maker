@@ -225,7 +225,7 @@ function displayResults(){
 
 	//Display Monsters
 	dungeon.generated.formatted_monsters.forEach(function(m){
-		$('#monsters-list').append('<li><a href="'+m.link+'" target="_blank">'+m.text+'</a></li>');
+		$('#monsters-list').append('<li><a href="'+m.link+'" target="_blank" class="waves-effect">'+m.text+'</a></li>');
 	});
 
 
