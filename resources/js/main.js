@@ -212,11 +212,12 @@ function displayResults(){
 
 	//Dungeon name (Biome/Biome2 Dungeon)	
 	var dungeon_name = '';
+	var splitter = ' / ';
 	dungeon.generated.biomes.forEach(function(b){
-		dungeon_name = dungeon_name + '/' + b.name;
+		dungeon_name = dungeon_name + splitter + b.name;
 	});
 	dungeon_name = dungeon_name + ' Dungeon';
-	if(dungeon_name[0] === '/') dungeon_name = dungeon_name.slice(1);
+	if(dungeon_name.indexOf(splitter) === 0) dungeon_name = dungeon_name.slice(splitter.length);
 
 	//Dungeon Stats
 	var difficulty = 'Difficulty: ' + dungeon.generated.difficulty;
