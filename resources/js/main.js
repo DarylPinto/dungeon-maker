@@ -183,7 +183,7 @@ function transitionToGeneratedDungeon(){
 	window.setTimeout(function(){
 		$('#user-settings').addClass('hidden');
 		$('#generated-dungeon').removeClass('hidden');
-	}, 600);
+	}, 670);
 
 	//Add padding to main card so that scrollbar stands out
 	window.setTimeout(function(){
@@ -232,9 +232,9 @@ function displayResults(){
 	$('#generated-dungeon .stats').text( [difficulty, challenge_rating].join(', ') );
 }
 
-////////////////////
-// Main Functions //
-////////////////////
+///////////////////////
+// Data Manipulation //
+///////////////////////
 
 //Data object containing settings from GUI
 dungeon.settings = new Object();

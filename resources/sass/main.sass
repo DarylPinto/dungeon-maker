@@ -51,8 +51,7 @@ main
 #main-card
 	border-radius: 5px
 	overflow: hidden
-	margin-top: 15px
-	margin-bottom: 15px
+	margin: 15px 10px
 
 #user-settings
 	margin: 0
@@ -62,8 +61,6 @@ main
 	max-width: 95vw
 	text-align: center
 	transition: .5s
-	height: 90vh
-	max-height: 510px
 	.btn
 		position: relative
 	.col
@@ -109,6 +106,7 @@ main
 				width: 2500px
 				transition: transform 1s
 				transform: scale(0.005)
+				will-change: transform
 			&.growing::after	
 				transform: scale(1)
 				background-color: white
@@ -158,14 +156,19 @@ main
 			&:hover
 				background-color: #f2f2f2
 
-table.monster-table, table.trap-table
-	margin-top: 20px
-	td
-		padding: 0
-		a
-			transition: .3s
-			color: black
-			display: block
-			padding: 15px 5px
-			&:hover
-				color: #039be5
+//Materialize col s(mall) breakpoint
+@media screen and (max-width: 600px)
+
+	#generated-dungeon
+		h4
+			font-size: 36px
+		h5
+			font-size: 16px
+
+	#user-settings #difficulty-selection
+		position: static
+		left: 0
+		margin-bottom: 20px
+		p
+			display: inline-block
+			width: 48%

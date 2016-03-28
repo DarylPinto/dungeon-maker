@@ -65,8 +65,7 @@ main {
 #main-card {
   border-radius: 5px;
   overflow: hidden;
-  margin-top: 15px;
-  margin-bottom: 15px; }
+  margin: 15px 10px; }
 
 #user-settings {
   margin: 0;
@@ -75,9 +74,7 @@ main {
   width: 700px;
   max-width: 95vw;
   text-align: center;
-  transition: 0.5s;
-  height: 90vh;
-  max-height: 510px; }
+  transition: 0.5s; }
   #user-settings .btn {
     position: relative; }
   #user-settings .col {
@@ -120,7 +117,8 @@ main {
       height: 2500px;
       width: 2500px;
       transition: transform 1s;
-      transform: scale(0.005); }
+      transform: scale(0.005);
+      will-change: transform; }
     #user-settings.controls-hidden .btn.growing::after {
       transform: scale(1);
       background-color: white;
@@ -168,16 +166,18 @@ main {
       #generated-dungeon #traps-list li a:hover, #generated-dungeon #monsters-list li a:hover {
         background-color: #f2f2f2; }
 
-table.monster-table, table.trap-table {
-  margin-top: 20px; }
-  table.monster-table td, table.trap-table td {
-    padding: 0; }
-    table.monster-table td a, table.trap-table td a {
-      transition: 0.3s;
-      color: black;
-      display: block;
-      padding: 15px 5px; }
-      table.monster-table td a:hover, table.trap-table td a:hover {
-        color: #039be5; }
+@media screen and (max-width: 600px) {
+  #generated-dungeon h4 {
+    font-size: 36px; }
+  #generated-dungeon h5 {
+    font-size: 16px; }
+
+  #user-settings #difficulty-selection {
+    position: static;
+    left: 0;
+    margin-bottom: 20px; }
+    #user-settings #difficulty-selection p {
+      display: inline-block;
+      width: 48%; } }
 
 /*# sourceMappingURL=main.css.map */
