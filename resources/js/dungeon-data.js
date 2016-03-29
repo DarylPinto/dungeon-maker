@@ -126,7 +126,7 @@ dungeon.data = new Object();
 			new Biome('Etheral',    '#C1F9FF'),
 			new Biome('Astral',     '#E3D7FF'),
 			new Biome('Bouncing',   '#FED7FF'),
-			new Biome('Gilded',     '#B7A162'),
+			new Biome('Gilded',     '#D6CE62'),
 			new Biome('Draconic',   '#BFAEE8'),
 			new Biome('Fairy',      '#FFC7E3'),
 			new Biome('Urban',      '#7A87B7'),

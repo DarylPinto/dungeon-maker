@@ -169,8 +169,6 @@ function constrainNumberInput(el, min, max){
 
 function transitionToGeneratedDungeon(){
 
-	//Move button up slightly
-	$('#generate-dungeon-btn').css('transform', 'translateY(-120px)');
 	//Hide settings UI
 	$('#user-settings').addClass('controls-hidden');
 
@@ -184,11 +182,6 @@ function transitionToGeneratedDungeon(){
 		$('#user-settings').addClass('hidden');
 		$('#generated-dungeon').removeClass('hidden');
 	}, 670);
-
-	//Add padding to main card so that scrollbar stands out
-	window.setTimeout(function(){
-		$('#main-card').css('padding', '15px 5px');
-	}, 700);
 
 	window.setTimeout(function(){
 		$('#generated-dungeon').css('max-height', '1000vh');
@@ -210,14 +203,9 @@ function changeBackgroundColorToMatchBiome(biomeColorArr){
 
 function displayResults(){
 
-	//Dungeon name (Biome/Biome2 Dungeon)	
-	var dungeon_name = '';
-	var splitter = ' / ';
-	dungeon.generated.biomes.forEach(function(b){
-		dungeon_name = dungeon_name + splitter + b.name;
-	});
+	//Dungeon name (Biome/Biome2 Dungeon)
+	var dungeon_name = dungeon.generated.biomes.map(function(b){return b.name}).join(' ');
 	dungeon_name = dungeon_name + ' Dungeon';
-	if(dungeon_name.indexOf(splitter) === 0) dungeon_name = dungeon_name.slice(splitter.length);
 
 	//Dungeon Stats
 	var difficulty = 'Difficulty: ' + dungeon.generated.difficulty;
@@ -324,6 +312,14 @@ function setBiome(){
 	//If multi-biome is enabled add another random biome
 	if(dungeon.settings.multi_biomes === true){
 		selected_biomes.push( randItemFrom(biome_pool) );
+	}
+
+	//If second biome is advanced, move it to the beginning of array
+	//because advanced biomes are usually adjectives
+	//When displayed on page "Angelic Fire Dungeon" sounds better than "Fire Angelic Dungeon"
+	if( dungeon.data.biomes.advanced.indexOf(selected_biomes[1]) > -1 ){
+		var target = selected_biomes.pop();
+		selected_biomes.splice(0, 0, target);
 	}
 
 	//Save selected biomes

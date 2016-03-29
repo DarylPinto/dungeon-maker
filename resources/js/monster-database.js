@@ -1,3 +1,7 @@
+/*
+https://docs.google.com/document/d/1d4z_ztfSXV8ZtQddIXO0RVZqA2bN1t3s0LWCU50HzAA/edit?usp=sharing_eid&ts=56e8c6af
+*/
+
 //Monster Object Constructor
 function Monster(name, xp, residing_biomes, bestiary_location){
 	this.name = name;
