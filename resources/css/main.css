@@ -127,7 +127,7 @@ main {
       animation: fadeCardToWhite 1s; }
 
 #generated-dungeon {
-  padding: 40px 30px 10px 30px;
+  padding: 40px 30px 20px 30px;
   max-height: 70vh;
   overflow: auto;
   opacity: 1;

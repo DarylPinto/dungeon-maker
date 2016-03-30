@@ -30,6 +30,12 @@ function getNumberOfItemsIn(array){
 	return count;
 }
 
+//Move item in array from one index to another
+function moveIndex(arr, target_index, destination_index){
+	var item = arr.splice(target_index, 1);
+	arr.splice(destination_index, 0, item[0]);
+}
+
 //Search through Monster database and find monster with name property: `name`
 function getMonsterByName(name){
 	var monster = null;
@@ -314,12 +320,10 @@ function setBiome(){
 		selected_biomes.push( randItemFrom(biome_pool) );
 	}
 
-	//If second biome is advanced, move it to the beginning of array
-	//because advanced biomes are usually adjectives
+	//If second biome isPrefix, move it to the beginning of array	
 	//When displayed on page "Angelic Fire Dungeon" sounds better than "Fire Angelic Dungeon"
-	if( dungeon.data.biomes.advanced.indexOf(selected_biomes[1]) > -1 ){
-		var target = selected_biomes.pop();
-		selected_biomes.splice(0, 0, target);
+	if(selected_biomes.length > 1){
+		if( selected_biomes[1].isPrefix ) moveIndex(selected_biomes, 1, 0);	
 	}
 
 	//Save selected biomes
