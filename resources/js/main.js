@@ -219,10 +219,10 @@ function displayResults(){
 
 	//Display Monsters
 	dungeon.generated.formatted_monsters.forEach(function(m){
-		$('#monsters-list').append('<li><a href="'+m.link+'" target="_blank" class="waves-effect">'+m.text+'</a></li>');
+		$('#monsters-list').append('<li><a href="'+m.link+'" target="_blank" class="waves-effect" data-position="left" data-tooltip="'+m.hoverInfo+'">'+m.text+'</a></li>');
 	});
 
-
+	$('#monsters-list li a').tooltip({delay: 50});
 	$('#generated-dungeon .name').text(dungeon_name);
 	$('#generated-dungeon .stats').text( [difficulty, challenge_rating].join(', ') );
 }
@@ -385,12 +385,14 @@ function setFormattedMonsters(){
 			if(monsters_with_amounts[amount] === 1){
 				formatted_monsters.push({
 					text: formatName(amount, false),
-					link: getMonsterByName(amount).wiki
+					link: getMonsterByName(amount).wiki,
+					hoverInfo: getMonsterByName(amount).xp.toLocaleString() + ' XP'
 				});
 			}else{
 				formatted_monsters.push({
 					text: monsters_with_amounts[amount] + ' ' + formatName(amount, true),
-					link: getMonsterByName(amount).wiki
+					link: getMonsterByName(amount).wiki,
+					hoverInfo: getMonsterByName(amount).xp.toLocaleString() + ' XP each'
 				});
 			}
 		}
